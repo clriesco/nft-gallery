@@ -1,25 +1,29 @@
-import logo from './logo.svg';
+import React from 'react';
+import { NFTContextProvider } from './context/NFTContext';
+import { FilterContextProvider } from './context/FilterContext';
+import HeaderMenu from './components/HeaderMenu';
+import Sidebar from './components/sidebar/Sidebar';
+import Content from './components/Content';
+
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+	return (
+		<NFTContextProvider>
+			<header className="App-header">
+				{/*<AppLogo />*/}
+				<HeaderMenu />
+			</header>
+			<div className="App">
+				<FilterContextProvider>
+					<Sidebar/>
+					<Content/>
+				</FilterContextProvider>
+			</div>
+		</NFTContextProvider>
+	);
 }
 
 export default App;
